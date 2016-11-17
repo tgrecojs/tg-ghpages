@@ -1,3 +1,21 @@
-<h1>
-  {{title}}
-</h1>
+<app-toolbar></app-toolbar>
+<app-navbar></app-navbar>
+<div id="banner">
+  <img [@pageLoad]="loaded" src="assets/img/tg-icon.png" alt="">
+  <div [@visibility]="visibility" id="btn-row">
+    <button (click)="onRotateLeft()">
+      Fold Left
+    </button>
+    <button (click)="onCenter()">
+    Back to center
+    </button>
+    <button (click)="onRotateRight()">
+      Fold RIght
+    </button>
+  </div>
+  <button *ngIf="'visibility === hidden'" type="button" class="btn" (click)="toggleButtons()">
+     Rotate the logo 
+    </button>
+</div>
+<router-outlet class="site-content"></router-outlet>
+<app-footer></app-footer>
