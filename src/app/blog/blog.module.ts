@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogComponent } from './blog.component';
+import { BlogrollComponent } from './blogroll.component';
+
 import { WordpressService } from '../wordpress.service';
 import { BlogPostComponent } from './blog-post/blog-post.component';
 import blogRoutes from './blog.routes';
@@ -10,7 +12,7 @@ import blogRoutes from './blog.routes';
     CommonModule,
     blogRoutes
   ],
-  declarations: [BlogComponent, BlogPostComponent],
+  declarations: [BlogComponent, BlogPostComponent, BlogrollComponent],
   providers: [WordpressService]
 })
 export class BlogModule { }

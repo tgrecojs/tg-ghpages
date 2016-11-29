@@ -52,13 +52,11 @@ export class BlogPostComponent {
     comments$:any;
     slug: any;
     postId : number;
-    api: string;
     blogUrl = 'http://54.209.113.46/wp-json/wp/v2/posts';
     randomPostUrl = `${this.blogUrl}?filter[orderby]=rand&filter[posts_per_page]=1`;
    
   constructor(private route: ActivatedRoute, private http: Http,
   private _blogService: WordpressService, private router: Router) {
-      const api = 'http://54.209.113.46/wp-json/wp/v2/';
     this.post$ = route.params
             .map((p: any) => p.id)
             .switchMap(id => _blogService.get(id));
@@ -72,7 +70,7 @@ export class BlogPostComponent {
   }
 
     goBack() {
-        let link = ['/blog'];
+        let link = ['/'];
         this.router.navigate(link);
     }
     goToPost(randomPost: any) {
