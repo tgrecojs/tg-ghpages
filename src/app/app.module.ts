@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { JsonpModule, HttpModule } from '@angular/http';
 import { BlogModule } from './blog/blog.module';
 import { ContactModule } from './contact/contact.module';
 
@@ -12,6 +12,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AngularFireModule } from 'angularfire2';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { ContactComponent } from './contact/contact.component';
+
 
 const firebaseConfig = {
     apiKey: 'AIzaSyDHQ3eNg7a9deTlKVXn5CYoyBXNL334rFA',
@@ -27,16 +29,18 @@ const firebaseConfig = {
     AppComponent,
     NavbarComponent,
     ToolbarComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
+    JsonpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(routes),
     BlogModule,
-    ContactModule
   ],
   providers: [],
   bootstrap: [AppComponent]

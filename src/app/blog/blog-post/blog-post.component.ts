@@ -52,7 +52,7 @@ export class BlogPostComponent {
     comments$:any;
     slug: any;
     postId : number;
-    blogUrl = 'http://54.209.113.46/wp-json/wp/v2/posts';
+    private blogUrl = '54.209.113.46/wp-json/wp/v2/posts';
     randomPostUrl = `${this.blogUrl}?filter[orderby]=rand&filter[posts_per_page]=1`;
    
   constructor(private route: ActivatedRoute, private http: Http,

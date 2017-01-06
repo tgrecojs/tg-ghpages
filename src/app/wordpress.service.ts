@@ -1,23 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Response, Jsonp, Headers, RequestOptions } from '@angular/http';
 import { Post } from './post';
 import { Comment } from './comment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs';
+
 
 @Injectable()
 export class WordpressService {
   postId: number;
  apiUrl = 'http://54.209.113.46/wp-json/wp/v2/posts';
  commentUrl = 'http://54.209.113.46/wp-json/wp/v2/comments';
-  constructor(private http: Http ) {
+  constructor(private http: Http) {
+    
   }
+
+  
 
   get(id: number): Observable<Post> {
     let post$ = this.http
       .get(`${this.apiUrl}/${id}`)
       .map(mapPost);
       return post$;
+  }
+  getJson(id): Observable<Post> {
+   let post$ = this.http.get(`${this.apiUrl}/${id}`
+     ).map(mapPost);
+      return post$;
+      };
+
+        getAllJson(): Observable<Post[]> {
+    let posts$ = this.http
+      .get(`${this.apiUrl}`)
+      .map(mapPosts);
+      return posts$;
   }
 
     getComments(id: number): Observable<Comment[]> {
@@ -45,10 +61,7 @@ export class WordpressService {
     content: comment.content,
     date: comment.date
     });
-    let headers = new Headers({ 'enctype': 'multipart/form-data'});
-        let options       = new RequestOptions({ headers: headers }); // Create a request option
-
-    let newComment$ = this.http.post(this.commentUrl, body, options)
+    let newComment$ = this.http.post(this.commentUrl, body)
                         .map(mapComments);
                         return newComment$;
   }

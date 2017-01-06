@@ -1,0 +1,41 @@
+<div id="cuber-outer">
+  <div class="photo-cube">
+					<img class="front"src="assets/cube/Angular2.png" alt="">
+					<div class="back photo-desc">
+					  <h3>Earth from Space</h3>
+					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+						<a href="#" class="button">download</a>
+					</div>
+					<img class="left" src="assets/cube/gruntjs.png" alt="">
+					<img [@moveCube]="rightTurn" class="right" src="assets/cube/js.png" alt="">
+				</div>
+</div>
+<div>
+  <button (click)="turn()">
+    Turn Right
+  </button>
+</div>
+
+<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
+
+<form (submit)="addName()">
+	<input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
+	<button type="submit">Add</button>
+</form>
+
+<ul>
+	<li *ngFor="let name of names">{{name}}</li>
+</ul>
+
+
+<h1>Animations</h1>
+    <hr>
+    <button type="button"
+        class="btn btn-primary btn-lg"
+        (click)="toggleVisibility()">
+      {{ getLabel() }}
+    </button>
+    <div [@visibility]="visibility" class="alert alert-success">
+      Animate good times! Come on!
+    </div>
+
